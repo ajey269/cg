@@ -1,0 +1,554 @@
+<pre>
+    
+// 2(A-1)Divide screen in to four regions, draw circle, rectangle and triangle square
+// in each region and fill the colo
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gd=DETECT,gm;
+clrscr();
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+line(1,240,640,240);
+line(320,1,320,480);
+circle(160,120,80);
+setfillstyle(4,2);
+floodfill(160,120,15);
+rectangle(400,50,520,190);
+setfillstyle(8,3);
+floodfill(450,80,15);
+rectangle(50,300,250,450);
+setfillstyle(1,2);
+floodfill(80,320,15);
+line(450,300,350,450);
+line(450,300,550,450);
+line(350,450,550,450);
+setfillstyle(1,2);
+floodfill(450,400,15);
+getch();
+}
+
+-----------------------------------------------------------------------------------------------
+
+
+// 2(A-2) Divide screen in to four regions, draw circle, rectangle and triangle
+// square in each region with appropriate message.
+
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gd=DETECT,gm,i;
+clrscr();
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+for(i=2;i<10;i++)
+{
+line(1,240,640,240);
+line(320,1,320,480);
+circle(160,120,80);
+//setfillstyle(4,2);
+//floodfill(160,120,15);
+//setcolor(RED);
+settextstyle(1,0,3);
+outtextxy(130,110,"Circle");
+rectangle(400,50,520,190);
+//setfillstyle(8,3);
+//floodfill(450,80,15);
+outtextxy(430,110,"Square");
+rectangle(50,300,250,450);
+//setfillstyle(7,2);
+//floodfill(80,320,15);
+outtextxy(100,360,"Rectangle");
+line(450,300,350,450);
+line(450,300,550,450);
+line(350,450,550,450);
+//setfillstyle(5,2);
+//floodfill(450,400,15);
+outtextxy(410,380,"Triangle");
+}
+getch();
+}
+
+-----------------------------------------------------------------------------------------------
+
+
+// HUT
+
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gd=DETECT,gm,xcen,ycen;
+clrscr();
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+settextstyle(1,0,4);
+outtextxy(150,130,”DIVINE COTTAGE”);
+line(100,100,400,100);
+line(100,100,50,200);
+line(50,200,400,200);
+line(400,400,400,200);
+line(400,100,400,200);
+line(150,200,150,400);
+line(100,100,150,200);
+rectangle(50,200,400,400);
+getch();
+}
+
+
+-----------------------------------------------------------------------------------------------
+
+//PRACTICAL-3(a) Draw the following shapes in the center of the screen:
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gd=DETECT,gm,xcen,ycen;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+xcen=getmaxx()/2;
+ycen=getmaxy()/2;
+line(xcen,0,xcen,getmaxx());
+line(0,ycen,getmaxx(),ycen);
+circle(xcen,ycen,200);
+rectangle(xcen-200,ycen-200,xcen+200,ycen+200); //square
+rectangle(xcen-90,ycen-180,xcen+90,ycen+180);
+ellipse(xcen,ycen,0,360,90,150);
+getch();
+}
+
+
+
+-----------------------------------------------------------------------------------------------
+
+// 3(b) Draw the following Concentric Circles in the center of the screen
+
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h> 
+#include<dos.h>
+void main()
+{
+int gd=DETECT,gm,xcen,ycen,i,color=1;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+xcen=getmaxx()/2;
+ycen=getmaxy()/2;
+for(i=10;i<=100;i+=1)
+{
+setcolor(color++);
+circle(xcen,ycen,i);
+delay(20);
+}
+getch();
+}
+
+
+-----------------------------------------------------------------------------------------------
+
+
+DDA LINE drawing algorithm.
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphic.h>
+#include<dos.h>
+#include<maths.h>
+void main()
+{
+float x,y,x1,y1,x2,y2,dx,dy,length;
+int i,gd,gm;
+clrscr();
+cout<<"\nenter the value of x1 :\t";
+cin>>x1;
+cout<<"\nenter the value of y1 :\t";  
+cin>>y1;
+cout<<"\nenter the value of x2 :\t";
+cin>>x2;
+cout<<"\nenter the value of y2 :\t";
+cin>>y2;
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"C:\\TC\\BGI");
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+length=dx;
+}
+dx=(x2-x1)/length;
+dy=(y2-y1)/length;
+x=x1+0.5;
+y=y1+0.5;
+i=1;
+while(i<=length)
+{
+putpixel(x,y,6);
+x=x+dx;
+y=y+dy;
+i=i+1;
+delay(100);
+}
+getch();
+ }
+
+
+-----------------------------------------------------------------------------------------------
+
+
+ PRACTICAL- 4(B)
+Bresenham’s Line drawing algorithm
+
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+float x,y,x1,y1,x2,y2,dx,dy,e; OUTPUT :
+int i,gd,gm;
+clrscr();
+cout<<"enter the value of x1:\t";
+cin>>x1;
+cout<<"enter the value of y1:\t";
+cin>>y1;
+cout<<"enter the value of x2:\t";
+cin>>x2;
+cout<<"enter the value of y2:\t";
+cin>>y2;
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"C:\\TC\\BGI");
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+x=x1;
+y=y1;
+e=2*(dy-dx);
+i=1;
+do
+{
+putpixel(x,y,15);
+while(e>0)
+{
+y=y+1;
+e=e-2*dx;
+}
+x=x+1;
+e=e-2*dy;
+i=i+1;
+delay(50);
+}while(i<=dx);
+getch();
+}
+
+-----------------------------------------------------------------------------------------------
+
+PRACTICAL-5(A)
+Mid-Point Circle Drawing Algorithm
+
+#include<iostream.h>
+#include<conio.h>
+#include<dos.h>
+#include<graphics.h>
+void plotpoints(int,int,int,int);
+void main()
+{
+int x,y,x1,y1,p,r;
+int gd,gm;
+clrscr();
+cout<<"Enter the center of circle x & y:"; :
+cin>>x>>y;
+cout<<"Enter the radius of circle:";
+cin>>r;
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+x1=0;
+y1=r;
+p=1-r;
+while(x1<=y1)
+{
+plotpoints(x,y,x1,y1);
+if(p<0)
+{
+p=p+2*x1+3;
+}
+else
+{
+p=p+2*(x1-y1)+5;
+y1--;
+}
+x1++;
+}
+getch();
+}
+void plotpoints(int a,int b,int c,int d)
+{
+putpixel(a+c,b+d,10);
+putpixel(a-c,b+d,9);
+putpixel(a+c,b-d,2);
+putpixel(a-c,b-d,7);
+putpixel(a+d,b+c,RED);
+putpixel(a-d,b+c,BLUE);
+putpixel(a+d,b-c,5);
+putpixel(a-d,b-c,6);
+delay(100);
+}
+
+
+
+-----------------------------------------------------------------------------------------------
+PRACTICAL-5(b)
+w.a.p for Mid-Point ellipse drawing algorithm.
+
+#include<graphics.h>
+#include<stdlib.h>
+#include<iostream.h>
+#include<conio.h>
+void main ()
+{
+ clrscr();
+ int gd = DETECT, gm;
+ int xc,yc,x,y;float p;
+ long rx,ry;
+ initgraph(&gd, &gm, "C:\\turboc3\\BGI");
+ cout<<"Enter coordinates of centre : ";
+ cin>>xc>>yc;
+ cout<<"Enter x,y radius of ellipse: ";
+ cin>>rx>>ry;
+ //Region 1
+ p=ry*ry-rx*rx*ry+rx*rx/4;
+ x=0;y=ry;
+ while(2.0*ry*ry*x <= 2.0*rx*rx*y)
+ {
+if(p < 0)
+{
+x++;
+p = p+2*ry*ry*x+ry*ry;
+}
+else
+{
+x++;y--;
+p = p+2*ry*ry*x-2*rx*rx*y-ry*ry;
+}
+putpixel(xc+x,yc+y,RED);
+putpixel(xc+x,yc-y,RED);
+putpixel(xc-x,yc+y,RED);
+putpixel(xc-x,yc-y,RED);
+ }
+
+ //Region 2
+ p=ry*ry*(x+0.5)*(x+0.5)+rx*rx*(y-1)*(y-1)-rx*rx*ry*ry;
+ while(y > 0)
+ {
+if(p <= 0)
+{
+x++;y--;
+p = p+2*ry*ry*x-2*rx*rx*y+rx*rx;
+}
+else OUTPUT
+{
+y--;
+p = p-2*rx*rx*y+rx*rx;
+}
+putpixel(xc+x,yc+y,RED);
+putpixel(xc+x,yc-y,RED);
+putpixel(xc-x,yc+y,RED);
+putpixel(xc-x,yc-y,RED);
+ }
+ getch();
+ closegraph();
+}
+
+-----------------------------------------------------------------------------------------------
+
+PRACTICAL-6(A)
+// Program for 2D-Scaling of Transformation
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<math.h>
+void main()
+{
+int x,y,x1,y1,x2,y2,xmax,ymax;
+int gd=DETECT,gm,n,i,tx,ty,a[20][2],b[20][2]; float sx,sy;
+clrscr();
+cout<<"Enter the no of edges of polygon:\n ";
+cin>>n; 
+cout<<"enter the co-ordinates of ploygon: \n";
+for(i=0;i<n;i++)
+{
+cout<<"X"<<i<<" Y"<<i<<" :";
+cin>>a[i][0]>>a[i][1];
+}
+a[n][0]=a[0][0];
+a[n][1]=a[0][1];
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+xmax=640;
+ymax=480;
+for(i=0;i<n;i++)
+{
+x1=a[i][0];
+y1=ymax-a[i][1];
+x2=a[i+1][0];
+y2=ymax-a[i+1][1];
+line(x1,y1,x2,y2);
+}
+cout<<"Enter Scalling parameters : sx,sy= ";
+cin>>sx>>sy;
+for(i=0;i<n;i++)
+{
+b[i][0]=(int)a[i][0]*sx;
+b[i][1]=(int)a[i][1]*sy;
+}
+b[i][0]=b[0][0];
+b[i][1]=b[0][1];
+for(i=0;i<n;i++)
+{
+x1=b[i][0];
+y1=ymax-b[i][1];
+x2=b[i+1][0];
+y2=ymax-b[i+1][1];
+ine(x1,y1,x2,y2);
+} getch(); }
+
+
+-----------------------------------------------------------------------------------------------4
+
+PRACTICAL-6(B)
+Program for 2D-Translation of Transformation
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<math.h>
+void main()
+{
+int x,y,x1,y1,x2,y2,xmax,ymax;
+int gd=DETECT,gm,n,i,tx,ty,a[20][2],b[20][2];
+clrscr();
+cout<<"Enter the no of edges of polygon";
+cin>>n;
+cout<<"enter the co-ordinates of ploygon";
+for(i=0;i<n;i++)
+{
+cout<<"X"<<i<<" Y"<<i<<" : "; 
+cin>>a[i][0]>>a[i][1];
+}
+a[n][0]=a[0][0];
+a[n][1]=a[0][1];
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+xmax=640;
+ymax=480;
+for(i=0;i<n;i++)
+{
+x1=a[i][0];
+y1=ymax-a[i][1];
+x2=a[i+1][0];
+y2=ymax-a[i+1][1];
+line(x1,y1,x2,y2);
+}
+cout<<"Enter the translate distance tx,ty: ";
+cin>>tx>>ty;
+for(i=0;i<n;i++)
+{
+b[i][0]=a[i][0]+tx;
+b[i][1]=a[i][1]+ty;
+}
+b[n][0]=b[0][0];
+b[n][1]=b[0][1];
+for(i=0;i<n;i++)
+{
+x1=b[i][0];
+y1=ymax-b[i][1];
+x2=b[i+1][0];
+y2=ymax-b[i+1][1];
+line(x1,y1,x2,y2);
+}
+getch();
+}
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-9(B)
+Write a program to fill a circle using Boundary Fill Algorithm.
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+void bfill(int x,int y,int f_col,int b_col)
+{
+int current=getpixel(x,y);
+if(current!=f_col&&current!=b_col) 
+{
+delay(10);
+putpixel(x,y,f_col);
+bfill(x+1,y,f_col,b_col);
+bfill(x-1,y,f_col,b_col);
+bfill(x,y+1,f_col,b_col);
+bfill(x,y-1,f_col,b_col);
+}
+}
+void main()
+{
+int gd=DETECT,gm,xc,yc,r;
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+clrscr();
+cout<<"Enter co-ordinate of the center";
+cin>>xc>>yc;
+cout<<"Enter radius of the circle";
+cin>>r;
+circle(xc,yc,r);
+cout<<"Press any key to fill the circle ....";
+ // getch();
+bfill(xc,yc,RED,WHITE);
+getch();
+closegraph();
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+// PRACTICAL-10(A)
+// Develop a simple text screen saver using graphics Algorithm.
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+void main()
+{
+int gd=DETECT,gm,xmax=640,ymax=480,font=4,direction=2,size=8,color=15;
+initgraph(&gd,&gm,"C:\\turboc3\\BGI");
+cleardevice();
+while(!kbhit())
+ {
+ settextstyle(random(font),random(direction),random(size));
+ setcolor(random(color));
+ outtextxy(random(ymax),random(xmax),"Vikas College");
+ delay(200);
+ }
+}
+
+
+
+
+
+
+
+https://jumpshare.com/v/5vUFgOaCUliFsZWOEsuk
+</pre>
